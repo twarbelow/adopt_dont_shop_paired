@@ -1,0 +1,24 @@
+<div class="shelter_new">
+  <h1>Create a New Shelter</h1>
+  <div class="navigate">
+    <a><%= link_to 'Go back to Shelters', "/shelters" %></a><br>
+    <a><%= link_to 'Go back to Pets', "/pets" %></a>
+  </div>
+  <div class="new_shelter_info">
+    <ol>
+    <%= form_tag '/shelters' do %>
+    <li> <%= label_tag :name %></li>
+    <%= text_field_tag :name %><br>
+    <li><%= label_tag :address %></li>
+    <%= text_field_tag :address %><br>
+    <li><%= label_tag :city %></li>
+    <%= text_field_tag :city %><br>
+    <li><%= label_tag :state %></li>
+    <%= text_field_tag :state%><br>
+    <li><%= label_tag :zip %></li>
+    <%= text_field_tag :zip %><br>
+    <a><%= submit_tag 'Create Shelter' %></a>
+  </ol>
+</div>
+<% end %>
+</div>

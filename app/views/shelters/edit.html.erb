@@ -1,0 +1,26 @@
+<div class="shelter_new">
+
+<h1>Edit Shelter: <%= @shelter.name %> </h1>
+  <div class="navigate">
+    <%= link_to 'Go back to Shelters', "/shelters" %><br>
+    <%= link_to 'Go back to Pets', "/pets" %>
+  </div>
+
+  <div class="new_shelter_info">
+    <ol>
+      <%= form_tag "/shelters/#{@shelter.id}", method: :patch do %>
+      <li><%= label_tag :name %></li>
+      <%= text_field_tag :name %>
+      <li><%= label_tag :address %></li>
+      <%= text_field_tag :address %>
+      <li><%= label_tag :city %></li>
+      <%= text_field_tag :city %>
+      <li><%= label_tag :state %></li>
+      <%= text_field_tag :state%>
+      <li><%= label_tag :zip %></li>
+      <%= text_field_tag :zip %><br>
+      <%= submit_tag "Update Shelter" %>
+      </ol>
+  </div>
+<% end %>
+</div>

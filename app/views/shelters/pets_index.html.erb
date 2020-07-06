@@ -1,0 +1,35 @@
+<div class="shelter_pets_index">
+  <div class="title_link">
+    <a><%= link_to "#{@shelter.name}", "/shelters/#{@shelter.id}" %></a>
+  </div>
+
+  <div class="navigate">
+    <%= link_to 'Go back to Shelters', "/shelters" %>
+    <br>
+    <%= link_to 'Go back to Pets', "/pets" %>
+  </div>
+
+  <h2>Available Pets<h2>
+  <body>
+    <% @pets.each do |pet| %>
+      <% if pet.shelter_id == @shelter.id %>
+      <div class="pet_photo">
+        <a><%= image_tag(pet.image, alt: "pet photo", method: :get) %></a>
+      </div>
+
+      <div class="info">
+
+        <h3>Name: <%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h3>
+        <%= link_to 'Update', "/pets/#{pet.id}/edit" %>
+        <br>
+        <%= button_to 'Delete', "/pets/#{pet.id}", method: :delete %>
+        <p>Approximate Age: <%= pet.approximate_age %></p>
+        <p>Sex: <%= pet.sex %></p>
+
+      </div>
+        <% else %>
+      <% end %>
+    <% end %>
+  </body>
+<%= link_to "Create Pet", "/shelters/#{@shelter.id}/pets/new" %>
+</div>

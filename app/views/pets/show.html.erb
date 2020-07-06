@@ -1,0 +1,23 @@
+<div class="show_shelter_page">
+  <div class="navigate">
+    <%= link_to 'Go back to Shelters', "/shelters" %> <br>
+    <%= link_to 'Go back to Pets', "/pets" %><br><br>
+  </div>
+
+  <body>
+    <h1><%= @pet.name %></h1>
+    <div class="pet_photo">
+      <p><%= image_tag(@pet.image, alt: "pet photo", method: :get) %></p>
+    </div>
+      <p>Description: <%= @pet.description %></p>
+      <p>Approximate Age: <%= @pet.approximate_age %></p>
+      <p>Sex: <%= @pet.sex %></p>
+      <p>Sheltered At: <%= link_to "#{@pet.shelter.name}", "/shelters/#{@pet.shelter.id}/pets" %></p>
+      <p>Status: <%= @pet.status %></p>
+  </body>
+
+  <div class="navigate">
+    <%= link_to 'Update Pet', "/pets/#{@pet.id}/edit" %>
+    <%= button_to 'Delete Pet', "/pets/#{@pet.id}", method: :delete %>
+  </div>
+</div>

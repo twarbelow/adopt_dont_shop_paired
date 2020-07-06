@@ -1,0 +1,137 @@
+.show_shelter_page{
+  background-image: url(https://wallpaperaccess.com/full/266770.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  text-align: center;
+  height: 100%;
+}
+
+.show_shelter_page p{
+  font: normal 24px Arial, Helvetica, sans-serif;
+  text-shadow: 1px 1px red;
+  line-height:1.6em;
+}
+
+.show_shelter_page h1{
+  margin: 0;
+  font: normal 38px Arial, Helvetica, sans-serif;
+}
+
+.show_shelter_page h2{
+  color: #00CED1;
+  text-decoration: underline;
+  font: normal 32px Arial, Helvetica, sans-serif;
+  line-height:1.6em;
+  letter-spacing: 2px
+}
+
+.show_shelter_page a{
+  font: normal 24px Arial, Helvetica, sans-serif;
+  color: #4B0082;
+}
+
+.shelter_pets_index h1{
+  margin: 0;
+  text-align: center;
+  font: normal 38px Arial, Helvetica, sans-serif;
+  color: #00CED1;
+}
+
+.pet_photo img{
+  height: 250px;
+  width: 250px;
+  object-fit: cover;
+  padding-top: 25px;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+.shelter_pets_index {
+  background-image: url(https://www.toptal.com/designers/subtlepatterns/patterns/curls.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 160%;
+}
+
+.shelter_pets_index a{
+  color: #00CED1;
+}
+
+.shelter_pets_index a:hover{
+  color: red;
+}
+
+.title_link{
+  text-align: center;
+  font: normal 34px Arial, Helvetica, sans-serif;
+}
+
+.shelter_pets_index h2{
+  text-align: left;
+  font: normal 32px Arial, Helvetica, sans-serif;
+  color: #00CED1;
+}
+
+.info{
+  text-align: left;
+  font: normal 26px Arial, Helvetica, sans-serif;
+  color: #F08080;
+  border-bottom: dotted;
+  border-width: 3px;
+  margin: 0;
+}
+
+.new_shelter_info{
+  text-align: left;
+  font: normal 28px Arial, Helvetica, sans-serif;
+  color: #F08080;
+  padding-bottom: 75px;
+  border-width: 3px;
+}
+
+.shelter_new {
+  background-image: url(https://www.toptal.com/designers/subtlepatterns/patterns/curls.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  margin: 0;
+}
+
+.shelter_new h1{
+  text-align: center;
+  font: normal 44px Arial, Helvetica, sans-serif;
+  color: #00CED1;
+  margin: 0;
+}
+
+.shelter_new h2{
+  text-align: left;
+  font: normal 38px Arial, Helvetica, sans-serif;
+  color: #CD5C5C;
+  margin: 25;
+}
+
+.shelter_new a{
+  color: #00CED1;
+}
+
+a:hover{
+  color: red;
+}
+
+.seperate {
+  font: normal 32px Arial, Helvetica, sans-serif;
+  padding-top: 25px;
+  padding-left: 50px;
+}
+
+.navigate {
+  font: normal 18px Arial, Helvetica, sans-serif;
+}
