@@ -11,7 +11,8 @@ RSpec.describe "shelter reviews index" do
     review_1 = Review.create(title:     "Best Review",
                              rating:    5,
                              content:   "Such good pets, all the best.",
-                             picture:   "this is a pic")
+                             picture:   "this is a pic",
+                             shelter_id: shelter_1.id)
 
     visit "shelters/#{shelter_1.id}"
 
