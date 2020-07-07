@@ -46,6 +46,13 @@
   padding-top: 25px;
 }
 
+.photo img{
+  height: 250px;
+  width: 250px;
+  object-fit: cover;
+  padding-top: 25px;
+}
+
 html, body {
     margin: 0;
     height: 100%;
