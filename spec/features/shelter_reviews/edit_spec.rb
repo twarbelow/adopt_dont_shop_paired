@@ -3,21 +3,29 @@ require 'rails_helper'
 RSpec.describe "edit shelter review", type: :feature do
   it "allows you to update shelter review information" do
 
-    shelter_1 = Shelter.create(name:       "Good Boys Are Us",
+    shelter_1 = Shelter.create(name:        "Good Boys Are Us",
                                address:     "1234 ABC Street",
                                city:        "Denver",
                                state:       "Colorado",
                                zip:         80202)
 
+    review_1 = Review.create(title:         "Best Review",
+                             rating:        5,
+                             content:       "Such good pets, all the best.",
+                             picture:       "https://www.northeastanimalshelter.org/wp-content/uploads/2013/10/1-IMG_8364-0011.jpg",
+                             shelter_id:    shelter_1.id)
+
     visit "shelters/#{shelter_1.id}"
 
-    click_on "Edit Review for #{shelter_1.name}"
+    expect(page).to have_link("Edit This Review")
 
-    expect(current_path).to eq("/shelters/#{shelter_1.id}/edit_review") # <----- path may need changed?
+    click_on "Edit This Review"
 
-    fill_in :title, with: "It was a cute little place..."
-    fill_in :rating, with: 3 # <------ Dependant on db, integer or string
-    fill_in :content, with: "Place sucks. Also Brad sucks."
+    expect(current_path).to eq("/shelters/#{shelter_1.id}/reviews/edit")
+
+    fill_in :title,           with: "It was a cute little place..."
+    fill_in :rating,          with: 3 # <------ Dependant on db, integer or string
+    fill_in :content,         with: "Place sucks. Also Brad sucks."
     fill_in :optional_image:, with: "https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/thumbs-down.png"
 
     click_on "Submit Review"
