@@ -12,7 +12,7 @@ RSpec.describe "edit shelter review", type: :feature do
     review_1 = Review.create(title:         "Best Review",
                              rating:        5,
                              content:       "Such good pets, all the best.",
-                             picture:       "https://www.northeastanimalshelter.org/wp-content/uploads/2013/10/1-IMG_8364-0011.jpg",
+                             image_path:    "https://www.northeastanimalshelter.org/wp-content/uploads/2013/10/1-IMG_8364-0011.jpg",
                              shelter_id:    shelter_1.id)
 
     visit "shelters/#{shelter_1.id}"
@@ -26,7 +26,7 @@ RSpec.describe "edit shelter review", type: :feature do
     fill_in :title,           with: "It was a cute little place..."
     fill_in :rating,          with: 3 # <------ Dependant on db, integer or string
     fill_in :content,         with: "Place sucks. Also Brad sucks."
-    fill_in :optional_image:, with: "https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/thumbs-down.png"
+    fill_in :image_path,      with: "https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/thumbs-down.png"
 
     click_on "Submit Review"
 
