@@ -1,4 +1,4 @@
-equire 'rails_helper'
+require 'rails_helper'
 
 RSpec.describe 'As a Visitor' do
   it 'allows user to delete a shelter review' do
@@ -11,7 +11,7 @@ RSpec.describe 'As a Visitor' do
     review_1 = Review.create(title:         "Best Review",
                              rating:        5,
                              content:       "Such good pets, all the best.",
-                             picture:       "https://www.northeastanimalshelter.org/wp-content/uploads/2013/10/1-IMG_8364-0011.jpg",
+                             image_path:    "https://www.northeastanimalshelter.org/wp-content/uploads/2013/10/1-IMG_8364-0011.jpg",
                              shelter_id:    shelter_1.id)
 
     visit "shelters/#{shelter_1.id}"
