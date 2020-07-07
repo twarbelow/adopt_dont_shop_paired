@@ -21,7 +21,7 @@ RSpec.describe "edit shelter review", type: :feature do
 
     click_on "Edit This Review"
 
-    expect(current_path).to eq("/shelters/#{shelter_1.id}/reviews/edit")
+    expect(current_path).to eq("/reviews/#{review_1.id}/edit")
 
     fill_in :title,           with: "It was a cute little place..."
     fill_in :rating,          with: 3 # <------ Dependant on db, integer or string
@@ -30,6 +30,6 @@ RSpec.describe "edit shelter review", type: :feature do
 
     click_on "Submit Review"
 
-    expect(current_path).to eq("shelters/#{shelter_1.id}")
+    expect(current_path).to eq("/shelters/#{shelter_1.id}")
   end
 end
