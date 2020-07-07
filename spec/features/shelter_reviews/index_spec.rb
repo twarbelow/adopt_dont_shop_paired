@@ -10,8 +10,9 @@ RSpec.describe "shelter reviews index" do
                                zip:         80202)
 
 
-    # If we have a method in shelter that is review, can we call shelter.reviews.create?
-    review_1 = Review.create(title:         "Best Review",
+
+    review_1 = shelter_1.reviews.create(
+                             title:         "Best Review",
                              rating:        5,
                              content:       "Such good pets, all the best.",
                              image_path:    "https://www.northeastanimalshelter.org/wp-content/uploads/2013/10/1-IMG_8364-0011.jpg",
@@ -19,9 +20,12 @@ RSpec.describe "shelter reviews index" do
 
     visit "shelters/#{shelter_1.id}"
 
-    expect(page).to have_content(review_1.title)
-    expect(page).to have_content(review_1.rating)
-    expect(page).to have_content(review_1.content)
-    expect(page).to have_content(review_1.image_path)
+      # Everything works up until this point.
+     within "#review-#{review_1.id}" do #Capybara::ElementNotFound:Unable to find css "#review- "
+      expect(page).to have_content(review_1.title)
+      expect(page).to have_content(review_1.rating)
+      expect(page).to have_content(review_1.content)
+      expect(page).to have_content(review_1.image_path)
+    end
   end
 end
