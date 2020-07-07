@@ -22,7 +22,6 @@ RSpec.describe "shelter pets index", type: :feature do
                         sex:                 "Male",
                         shelter_id:          shelter_1.id)
 
-
     pet_2 = Pet.create!(image:               "https://i.pinimg.com/736x/3f/47/7f/3f477ff92627ba171fcc867f23285cf5.jpg",
                         name:                "Delilah",
                         approximate_age:     4.0,

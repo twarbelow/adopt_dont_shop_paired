@@ -19,8 +19,8 @@ RSpec.describe "shelter reviews index" do
                              shelter_id:    shelter_1.id)
 
     visit "shelters/#{shelter_1.id}"
-
-      # Everything works up until this point.
+    save_and_open_page
+      # Everything works up until this point
      within "#review-#{review_1.id}" do #Capybara::ElementNotFound:Unable to find css "#review- "
       expect(page).to have_content(review_1.title)
       expect(page).to have_content(review_1.rating)

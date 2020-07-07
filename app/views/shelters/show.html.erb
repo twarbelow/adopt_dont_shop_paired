@@ -1,22 +1,30 @@
-    <div class="show_shelter_page">
+<div class="show_shelter_page">
 
-    <title><%= @shelter.name %></title>
-    <link rel="stylesheet" href="stylesheets/main.css">
+  <title><%= @shelter.name %></title>
+  <link rel="stylesheet" href="stylesheets/main.css">
 
-    <div class="navigate">
-      <a><%= link_to 'Go back to Shelters', "/shelters" %></a>
-      <br>
-      <a><%= link_to 'Go back to Pets', "/pets" %></a>
-    </div>
+  <div class="navigate">
+    <a><%= link_to 'Go back to Shelters', "/shelters" %></a>
+    <br>
+    <a><%= link_to 'Go back to Pets', "/pets" %></a>
+  </div>
 
-    <h2><%= @shelter.name %></h2>
-    <body>
-        <p>Address: <%= @shelter.address %></p>
-        <p>City: <%= @shelter.city %></p>
-        <p>State: <%= @shelter.state %></p>
-        <p>Zip: <%= @shelter.zip %></p>
-    </body>
-      <div class="navigate">
-      <a><%= link_to 'This Shelter\'s Pets', "/shelters/#{@shelter.id}/pets" %></a>
-      </div>
-    </div>
+  <h2><%= @shelter.name %></h2>
+  <body>
+    <p>Address: <%= @shelter.address %></p>
+    <p>City: <%= @shelter.city %></p>
+    <p>State: <%= @shelter.state %></p>
+    <p>Zip: <%= @shelter.zip %></p>
+  </body>
+  <div class="navigate">
+    <a><%= link_to 'This Shelter\'s Pets', "/shelters/#{@shelter.id}/pets" %></a>
+  </div>
+  <section class="reviews">
+    <p><%=  @shelter.reviews.each do |review| %></p>
+      <p><%= review.title %></p>
+      <p><%= review.rating %></p>
+      <p><%= review.content %></p>
+      <!-- <p> image_tag(review.image_path, alt: "review photo", method: :get) %></p> -->
+    <p><%= end %></p>
+  </section>
+</div>
