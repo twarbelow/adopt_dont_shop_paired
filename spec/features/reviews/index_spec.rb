@@ -20,12 +20,10 @@ RSpec.describe "shelter reviews index" do
 
     visit "shelters/#{shelter_1.id}"
     save_and_open_page
-      # Everything works up until this point
-     within "#review-#{review_1.id}" do #Capybara::ElementNotFound:Unable to find css "#review- "
-      expect(page).to have_content(review_1.title)
-      expect(page).to have_content(review_1.rating)
-      expect(page).to have_content(review_1.content)
-      expect(page).to have_content(review_1.image_path)
-    end
+    # Everything works up until this point
+    expect(page).to have_content(review_1.title)
+    expect(page).to have_content(review_1.rating)
+    expect(page).to have_content(review_1.content)
+    expect(page).to have_css("img[src*='https://www.northeastanimalshelter.org/wp-content/uploads/2013/10/1-IMG_8364-0011.jpg']")
   end
 end

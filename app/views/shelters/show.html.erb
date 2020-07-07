@@ -1,5 +1,4 @@
 <div class="show_shelter_page">
-
   <title><%= @shelter.name %></title>
   <link rel="stylesheet" href="stylesheets/main.css">
 
@@ -20,11 +19,13 @@
     <a><%= link_to 'This Shelter\'s Pets', "/shelters/#{@shelter.id}/pets" %></a>
   </div>
   <section class="reviews">
-    <p><%=  @shelter.reviews.each do |review| %></p>
-      <p><%= review.title %></p>
-      <p><%= review.rating %></p>
-      <p><%= review.content %></p>
-      <!-- <p> image_tag(review.image_path, alt: "review photo", method: :get) %></p> -->
-    <p><%= end %></p>
+    <p><% @shelter.reviews.each do |review| %>
+        <%= review.title %>
+        <%= review.rating %>
+        <%= review.content %>
+        <%= image_tag(review.image_path, alt:"review photo", method: :get) %>
+    <% end %>
+    </p>
+
   </section>
 </div>
