@@ -18,9 +18,9 @@ RSpec.describe 'As a Visitor' do
 
     expect(page).to have_link("Delete This Review")
 
-    click_button 'Delete This Review'
+    click_on 'Delete This Review'
 
-    expect(current_path).to eq("shelters/#{shelter_1.id}")
+    expect(current_path).to eq("/shelters/#{shelter_1.id}")
 
     expect(page).to_not have_content(review_1.title)
     expect(page).to_not have_content(review_1.content)
