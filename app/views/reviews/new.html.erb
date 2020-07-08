@@ -1,0 +1,22 @@
+<div class="review_new">
+  <h1>Add New Review</h1>
+  <div class="navigate">
+    <a><%= link_to 'Go back to the Shelter', "/shelters/#{@shelter.id}" %></a><br>
+  </div>
+  <br>
+  <div class="new_review_info">
+    <ol>
+      <%= form_tag "/shelters/#{@shelter.id}/reviews", method: :post do %>
+      <li><%= label_tag :title %></li>
+      <%= text_field_tag :title %><br>
+      <li> <%= label_tag :rating %> </li>
+      <%= select_tag :rating, options_for_select([[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]]) %>
+      <li><%= label_tag :content %></li>
+      <%= text_area_tag :content %><br>
+      <li><%= label_tag :image_path %></li>
+      <%= text_field_tag :image_path %><br><br>
+      <%= submit_tag 'Submit Review' %>
+    </ol>
+    <% end %>
+  </div>
+</div>

@@ -13,7 +13,6 @@ RSpec.describe "pet creation page", type: :feature do
     visit "/shelters/#{shelter_1.id}/pets"
 
     click_on 'Create Pet'
-
     expect(current_path).to eq("/shelters/#{shelter_1.id}/pets/new")
 
     fill_in :image, with: "https://www.petlandlancaster.com/wp-content/uploads/2019/11/1504500_800.jpg"
