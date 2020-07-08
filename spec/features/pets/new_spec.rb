@@ -8,8 +8,6 @@ RSpec.describe "Shelter Pet creation process", type: :feature do
                                 city:        "Denver",
                                 state:       "Colorado",
                                 zip:         80202)
-
-
   end
 
   it "allows user to see a link to add an adoptable pet" do
