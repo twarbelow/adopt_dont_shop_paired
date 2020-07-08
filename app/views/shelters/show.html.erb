@@ -15,9 +15,11 @@
     <p>State: <%= @shelter.state %></p>
     <p>Zip: <%= @shelter.zip %></p>
   </body>
+
   <div class="navigate">
     <a><%= link_to 'This Shelter\'s Pets', "/shelters/#{@shelter.id}/pets" %></a>
   </div>
+
   <section class="reviews">
       <% @shelter.reviews.each do |review| %>
       <div class="photo">
@@ -26,11 +28,12 @@
         <p> Rating: <%= review.rating %></p>
         <p> <%= review.title %></p>
         <p><%= review.content %></p>
-
-    <div class="navigate">
-      <a><%= link_to 'Edit This Review', "/reviews/#{review.id}/edit" %></a>
-      <a><%= link_to 'Delete This Review', "/reviews/#{review.id}", method: :delete %></a>
+      <% end %>
+    <div class="navigate
+      <a><%= link_to 'Edit This Review', "/reviews/#{@review.id}/edit" %></a>
+      <a><%= link_to 'Delete This Review', "/reviews/#{@review.id}", method: :delete %></a>
     </div>
-    <% end %>
+
+
   </section>
 </div>
