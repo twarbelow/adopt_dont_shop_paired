@@ -38,6 +38,7 @@ RSpec.describe "new shelter review" do
       fill_in :image_path,      with: "https://i.redd.it/jab5c3kfm8s21.jpg"
 
       click_on "Submit Review"
+      save_and_open_page
 
       expect(page).to have_content("Review not submitted: Required information missing.")
     end
