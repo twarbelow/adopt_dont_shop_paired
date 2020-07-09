@@ -19,7 +19,7 @@ RSpec.describe "shelter reviews index" do
                              shelter_id:    shelter_1.id)
 
     visit "shelters/#{shelter_1.id}"
-    save_and_open_page
+    
     # Everything works up until this point
     expect(page).to have_content(review_1.title)
     expect(page).to have_content(review_1.rating)
