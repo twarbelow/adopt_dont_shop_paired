@@ -1,22 +1,39 @@
-    <div class="show_shelter_page">
+<div class="show_shelter_page">
+  <title><%= @shelter.name %></title>
+  <link rel="stylesheet" href="stylesheets/main.css">
 
-    <title><%= @shelter.name %></title>
-    <link rel="stylesheet" href="stylesheets/main.css">
+  <div class="navigate">
+    <a><%= link_to 'Go back to Shelters', "/shelters" %></a>
+    <br>
+    <a><%= link_to 'Go back to Pets', "/pets" %></a>
+  </div>
 
-    <div class="navigate">
-      <a><%= link_to 'Go back to Shelters', "/shelters" %></a>
-      <br>
-      <a><%= link_to 'Go back to Pets', "/pets" %></a>
-    </div>
+  <h2><%= @shelter.name %></h2>
+  <body>
+    <p>Address: <%= @shelter.address %></p>
+    <p>City: <%= @shelter.city %></p>
+    <p>State: <%= @shelter.state %></p>
+    <p>Zip: <%= @shelter.zip %></p>
+  </body>
 
-    <h2><%= @shelter.name %></h2>
-    <body>
-        <p>Address: <%= @shelter.address %></p>
-        <p>City: <%= @shelter.city %></p>
-        <p>State: <%= @shelter.state %></p>
-        <p>Zip: <%= @shelter.zip %></p>
-    </body>
-      <div class="navigate">
-      <a><%= link_to 'This Shelter\'s Pets', "/shelters/#{@shelter.id}/pets" %></a>
+  <div class="navigate">
+    <a><%= link_to 'This Shelter\'s Pets', "/shelters/#{@shelter.id}/pets" %></a>
+  </div>
+
+  <section class="reviews">
+    <br>
+    <% @shelter.reviews.each do |review| %>
+      <div class="photo">
+        <%= image_tag(review.image_path, alt:"review photo", method: :get) %>
       </div>
-    </div>
+        <p> Rating: <%= review.rating %></p>
+        <p> <%= review.title %></p>
+        <p><%= review.content %></p>
+      <div class="navigate">
+        <a><%= link_to 'Edit This Review', "/reviews/#{review.id}/edit" %></a>
+        <a><%= link_to 'Delete This Review', "/reviews/#{review.id}", method: :delete %></a>
+      </div>
+    <% end %>
+    <a><%= link_to 'Add Review', "/shelters/#{@shelter.id}/reviews/new" %></a>
+  </section>
+</div>

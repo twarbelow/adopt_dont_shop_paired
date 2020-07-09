@@ -18,6 +18,6 @@
 
   <div class="navigate">
     <%= link_to 'Update Pet', "/pets/#{@pet.id}/edit" %>
-    <%= button_to 'Delete Pet', "/pets/#{@pet.id}", method: :delete %>
+    <%= link_to 'Delete Pet', "/pets/#{@pet.id}", method: :delete %>
   </div>
 </div>
