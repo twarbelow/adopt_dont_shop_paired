@@ -106,7 +106,7 @@ Each review will have:
 ```
 
 ```
-[ ] done
+[x] done
 
 User Story 3, Shelter Review Creation
 
@@ -124,7 +124,7 @@ and I can see my new review
 ```
 
 ```
-[ ] done
+[x] done
 
 User Story 4, Shelter Review Creation, cont.
 
@@ -154,7 +154,7 @@ And I can see my updated review
 ```
 
 ```
-[ ] done
+[x] done
 
 User Story 6, Edit a Shelter Review, cont.
 
