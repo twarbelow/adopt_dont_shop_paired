@@ -47,9 +47,15 @@ pet_3 = Pet.create!(image:               "https://cdn0.wideopenpets.com/wp-conte
                     description:         "The best boy",
                     shelter_id:          shelter_2.id,
                     status:              "adoptable")
-                    
+
 review_1 = Review.create(title:         "Best Review",
                          rating:        5,
                          content:       "Such good pets, all the best.",
                          image_path:    "https://www.northeastanimalshelter.org/wp-content/uploads/2013/10/1-IMG_8364-0011.jpg",
                          shelter_id:    shelter_1.id)
+
+review_2 = Review.create!(title:         "Lame Place",
+                          rating:        2,
+                          content:       "Doggo did me a bite.",
+                          image_path:    "https://www.dictionary.com/e/wp-content/uploads/2018/05/doggo-300x300.jpg",
+                          shelter_id:    shelter_1.id)
