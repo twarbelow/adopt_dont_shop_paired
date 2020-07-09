@@ -13,15 +13,6 @@ RSpec.describe "new shelter review" do
     end
 
     it "I can create a review for this shelter" do
-      # shelter_1 = Shelter.create(name:        "Good Boys Are Us",
-      #                            address:     "1234 ABC Street",
-      #                            city:        "Denver",
-      #                            state:       "Colorado",
-      #                            zip:         80202)
-      #
-      # visit "shelters/#{shelter_1.id}"
-      #
-      # click_on 'Add Review'
       expect(current_path).to eq("/shelters/#{@shelter_1.id}/reviews/new")
 
       fill_in :title,           with: "Cute little place!"

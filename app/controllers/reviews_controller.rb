@@ -6,10 +6,15 @@ class ReviewsController < ApplicationController
 
   def create
     @shelter = Shelter.find(params[:id])
-    new_review = Review.new(review_params)
+    new_review = @shelter.reviews.new(review_params)
+      # "@shelter.reviews.new" returns a Review instance that already knows it belongs to this specific Shelter
+    # @shelter = Shelter.find(params[:id])
+    # new_review = Review.new(review_params)
+    # new_review.shelter = @shelter
     if new_review.save
       redirect_to "/shelters/#{@shelter.id}"
     else
+      # byebug
       flash[:notice] = "Review not submitted: Required information missing."
       render :new
     end
@@ -38,7 +43,7 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params.permit(:title, :rating, :content, :image_path)
+    params.permit(:title, :rating, :content, :image_path, :id)
   end
 
 end
