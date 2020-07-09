@@ -17,7 +17,7 @@ RSpec.describe 'Favorites Indicator' do
     visit "/"
     expect(page).to have_content("Favorites")
 
-    visit "/pets"
+    visit "/shelters/#{shelter.id}"
     expect(page).to have_content("Favorites")
 
     visit "/pets/#{pet.id}"
@@ -25,7 +25,7 @@ RSpec.describe 'Favorites Indicator' do
   end
 
   it 'show a count of favorites' do
-    visit "/" 
+    visit "/"
     expect(page).to have_content("Favorites: 0")
   end
 end
