@@ -12,6 +12,7 @@
   </body>
 
   <div class="navigate">
+    <%= link_to 'Favorite This Pet', "/pets/#{@pet.id}/favorites", method: :post %>
     <%= link_to 'Update Pet', "/pets/#{@pet.id}/edit" %>
     <%= link_to 'Delete Pet', "/pets/#{@pet.id}", method: :delete %>
   </div>
