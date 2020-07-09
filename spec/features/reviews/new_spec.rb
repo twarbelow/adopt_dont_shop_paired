@@ -2,16 +2,16 @@ require 'rails_helper'
 
 RSpec.describe "new shelter review" do
   describe 'As a visitor'
-    before: :each do
-      shelter_1 = Shelter.create(name:        "Good Boys Are Us",
+    before(:each) do
+      @shelter_1 = Shelter.create(name:        "Good Boys Are Us",
                                  address:     "1234 ABC Street",
                                  city:        "Denver",
                                  state:       "Colorado",
                                  zip:         80202)
-      visit "shelters/#{shelter_1.id}"
+      visit "shelters/#{@shelter_1.id}"
+      click_on "Add Review"
     end
 
-      click_on 'Add Review'
     it "I can create a review for this shelter" do
       # shelter_1 = Shelter.create(name:        "Good Boys Are Us",
       #                            address:     "1234 ABC Street",
@@ -22,7 +22,7 @@ RSpec.describe "new shelter review" do
       # visit "shelters/#{shelter_1.id}"
       #
       # click_on 'Add Review'
-      expect(current_path).to eq("/shelters/#{shelter_1.id}/reviews/new")
+      expect(current_path).to eq("/shelters/#{@shelter_1.id}/reviews/new")
 
       fill_in :title,           with: "Cute little place!"
       select('4', from: :rating)
@@ -31,7 +31,7 @@ RSpec.describe "new shelter review" do
 
       click_on "Submit Review"
 
-      expect(current_path).to eq("/shelters/#{shelter_1.id}")
+      expect(current_path).to eq("/shelters/#{@shelter_1.id}")
 
       review = Review.last
       expect(page).to have_content(review.title)
@@ -40,7 +40,7 @@ RSpec.describe "new shelter review" do
     end
 
     it 'I cannot create a review for this shelter without a title, rating, and content' do
-      expect(current_path).to eq("/shelters/#{shelter_1.id}/reviews/new")
+      expect(current_path).to eq("/shelters/#{@shelter_1.id}/reviews/new")
 
       fill_in :title,           with: "Cute little place!"
       fill_in :content,         with: "Omg love this place I go here all the time"
