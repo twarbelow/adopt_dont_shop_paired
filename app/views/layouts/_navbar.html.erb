@@ -3,6 +3,7 @@
     <ul class="nav-list">
       <li><%= link_to 'Go back to Shelters', "/shelters" %></li>
       <li><%= link_to 'Go back to Pets', "/pets" %></li>
-      <li class="fav-pets"><%= link_to 'Favorites ', "/" %></li>
+      <li class="fav-pets"><%= link_to "Favorites: #{@favorites.count}", "/" %></li>
+    </ul>
   </div>
 </header>
