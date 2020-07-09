@@ -1,11 +1,6 @@
 <div class="shelter_pets_index">
   <h1>All Pets</h1>
 
-  <div class="navigate">
-    <a><%= link_to 'Go back to Shelters', "/shelters" %></a><br>
-    <a><%= link_to 'Go back to Pets', "/pets" %></a>
-  </div>
-
   <div class="seperate">
     <h2> List of Pets:</h2>
       <% @pets.each do |pet| %>

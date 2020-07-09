@@ -2,13 +2,6 @@
   <div class="title_link">
     <a><%= link_to "#{@shelter.name}", "/shelters/#{@shelter.id}" %></a>
   </div>
-
-  <div class="navigate">
-    <%= link_to 'Go back to Shelters', "/shelters" %>
-    <br>
-    <%= link_to 'Go back to Pets', "/pets" %>
-  </div>
-
   <h2>Available Pets<h2>
   <body>
     <% @pets.each do |pet| %>
