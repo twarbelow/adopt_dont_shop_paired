@@ -27,7 +27,7 @@
         <a><%= link_to 'Edit This Review', "/reviews/#{review.id}/edit" %></a>
         <a><%= link_to 'Delete This Review', "/reviews/#{review.id}", method: :delete %></a>
       </div>
-    <% end %>
-    <a><%= link_to 'Add Review', "/shelters/#{@shelter.id}/reviews/new" %></a>
   </section>
+  <% end %>
+    <a><%= link_to 'Add Review', "/shelters/#{@shelter.id}/reviews/new" %></a>
 </div>
