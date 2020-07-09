@@ -20,9 +20,9 @@
     <a><%= link_to 'This Shelter\'s Pets', "/shelters/#{@shelter.id}/pets" %></a>
   </div>
 
-  <section class="reviews">
     <br>
     <% @shelter.reviews.each do |review| %>
+    <section id = "review-<%= review.id %>">
       <div class="photo">
         <%= image_tag(review.image_path, alt:"review photo", method: :get) %>
       </div>
