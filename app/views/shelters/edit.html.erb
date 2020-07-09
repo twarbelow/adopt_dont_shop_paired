@@ -1,11 +1,6 @@
 <div class="shelter_new">
 
 <h1>Edit Shelter: <%= @shelter.name %> </h1>
-  <div class="navigate">
-    <%= link_to 'Go back to Shelters', "/shelters" %><br>
-    <%= link_to 'Go back to Pets', "/pets" %>
-  </div>
-
   <div class="new_shelter_info">
     <ol>
       <%= form_tag "/shelters/#{@shelter.id}", method: :patch do %>
