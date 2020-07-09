@@ -10,7 +10,7 @@
       <li><%= label_tag :title %></li>
       <%= text_field_tag :title %><br>
       <li> <%= label_tag :rating %> </li>
-      <%= select_tag :rating, options_for_select([[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]]) %>
+      <%= select_tag :rating, options_for_select([["select rating", nil], [1, 1], [2, 2], [3, 3], [4, 4], [5, 5]]) %>
       <li><%= label_tag :content %></li>
       <%= text_area_tag :content %><br>
       <li><%= label_tag :image_path %></li>
