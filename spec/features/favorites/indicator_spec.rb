@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Favorites Indicator' do
   describe 'is in the nav bar' do
-    it 'on every page' do
+    it 'on every page showing a count of favorites' do
       shelter = Shelter.create(name:            "Good Boys Are Us",
                                  address:       "1234 ABC Street",
                                  city:          "Denver",
@@ -16,19 +16,13 @@ RSpec.describe 'Favorites Indicator' do
                           shelter_id:           shelter.id)
 
       visit "/"
-      save_and_open_page
-      expect(page).to have_content("Favorites")
+      expect(page).to have_content("Favorites: 0")
 
       visit "/shelters/#{shelter.id}"
-      expect(page).to have_content("Favorites")
+      expect(page).to have_content("Favorites: 0")
 
       visit "/pets/#{pet.id}"
-      expect(page).to have_content("Favorites")
+      expect(page).to have_content("Favorites: 0")
     end
-
-    # it 'shows a count of favorites' do
-    #   visit "/"
-    #   expect(page).to have_content("Favorites: 0")
-    # end
   end
 end
