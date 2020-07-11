@@ -52,4 +52,66 @@ RSpec.describe 'Favorite index page', type: :feature do
       end
     end
   end
+
+  describe "Once a pet has been favorited" do
+    describe "When I visit favorites index page" do
+      it 'next to each pet, I see a button or link to remove that pet from my favorites' do
+
+        within "#favorite-#{@pet_1.id}" do
+          expect(page).to have_link("Remove From Favorites", href: "/favorites/#{@pet_1.id}")
+        end
+
+        within "#favorite-#{@pet_2.id}" do
+          expect(page).to have_link("Remove From Favorites", href: "/favorites/#{@pet_2.id}")
+        end
+      end
+    end
+  end
+
+  describe 'When I click on that button or link to remove a favorite' do
+    it "removes pet from favorites, user is redirected to favorites index and indicator decremented" do
+      expect(page).to have_content()# enter favorites counter here
+
+      within "#favorite-#{@pet_1.id}" do
+        click_on("Remove From Favorites")
+      end
+
+      expect(current_path).to eq("/favorites")
+      expect(page).to have_content()# enter flash message here
+      expect(page).not_to have_css("#favorite-#{@pet_1.id}")
+      expect(page).not_to have_link("#{@pet_1.name}", href: "/pets/#{@pet_1.id}")
+      expect(page).to have_content()# enter favorites counter here
+    end
+  end
+
+  describe 'When I have not added any pets to my favorites list' do
+    describe "And I visit my favorites page ('/favorites')" do
+      it 'I see text saying that I have no favorited pets' do
+        visit '/favorites'
+
+        expect(page).to have_content("You have not favorited any pets")
+      end
+    end
+  end
+
+  describe "When I have added pets to my favorites list" do
+    describe "And I visit my favorites page ('/favorites')" do
+      it "I see a link to remove all favorited pets" do
+        visit '/favorites'
+        expect(page).to have_link('Remove All Favorited Pets')
+      end
+    end
+
+    describe "When I click link to remove all favorite pets" do
+      it "I'm redirected back to the favorites page, see no favorites message, and indicator is 0" do
+        visit '/favorites'
+        click_on('Remove All Favorited Pets')
+
+        expect(current_path).to eq('/favorites')
+        expect(page).to have_content("You have removed all pets from your favorites list. ╥﹏╥")
+        expect(page).to have_content("You have not favorited any pets. Visit pet pages and click 'Favorite This Pet' to add them here!")
+        expect(page).to have_content('Favorites (0)')
+      end
+    end
+  end
 end
