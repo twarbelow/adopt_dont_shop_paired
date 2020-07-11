@@ -1,6 +1,6 @@
 class CreateReviews < ActiveRecord::Migration[5.1]
   def change
-    create_table :reviews do |t|
+    create_table :reviews, force: :cascade do |t|
       t.string :title
       t.integer :rating
       t.string :content
