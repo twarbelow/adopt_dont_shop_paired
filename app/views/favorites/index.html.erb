@@ -4,7 +4,7 @@
 <% @favorite_pets.each do |favorite| %>
   <section id="favorite-<%= favorite.id %>">
     <h3>
-      <%= link_to favorite.name, "/pets/#{favorite.id}" %>
+      <%= link_to "favorite.name", "/pets/#{favorite.id}" %>
     </h3>
     <div class="photo">
       <%= image_tag("#{favorite.image}", alt:"favorite photo", method: :get) %>
