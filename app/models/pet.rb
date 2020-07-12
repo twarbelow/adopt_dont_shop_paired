@@ -5,4 +5,8 @@ class Pet < ApplicationRecord
   validates_presence_of :sex
   validates_presence_of :shelter_id
   belongs_to :shelter
+
+  def self.favorited(favorites)
+    favorites
+  end
 end

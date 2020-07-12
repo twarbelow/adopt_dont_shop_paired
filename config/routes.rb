@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get '/', to: 'shelters#index' #eventually change this to a welcome/home page
+
   get '/shelters', to: 'shelters#index'
   get '/shelters/new', to: 'shelters#new'
   post '/shelters', to: 'shelters#create'
@@ -22,4 +24,10 @@ Rails.application.routes.draw do
   get '/reviews/:id/edit', to: 'reviews#edit'
   patch '/reviews/:id', to: 'reviews#update'
   delete '/reviews/:id', to: 'reviews#destroy'
+
+  post 'pets/:id/favorites', to: 'favorites#create'
+  get '/favorites', to: 'favorites#index'
+  delete '/favorites/:id', to: 'favorites#destroy'
+  delete '/favorites', to: 'favorites#destroy_all'
+
 end

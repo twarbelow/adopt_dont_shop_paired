@@ -2,12 +2,6 @@
   <title><%= @shelter.name %></title>
   <link rel="stylesheet" href="stylesheets/main.css">
 
-  <div class="navigate">
-    <a><%= link_to 'Go back to Shelters', "/shelters" %></a>
-    <br>
-    <a><%= link_to 'Go back to Pets', "/pets" %></a>
-  </div>
-
   <h2><%= @shelter.name %></h2>
   <body>
     <p>Address: <%= @shelter.address %></p>
@@ -20,9 +14,9 @@
     <a><%= link_to 'This Shelter\'s Pets', "/shelters/#{@shelter.id}/pets" %></a>
   </div>
 
-  <section class="reviews">
     <br>
     <% @shelter.reviews.each do |review| %>
+    <section id = "review-<%= review.id %>">
       <div class="photo">
         <%= image_tag(review.image_path, alt:"review photo", method: :get) %>
       </div>
@@ -33,7 +27,7 @@
         <a><%= link_to 'Edit This Review', "/reviews/#{review.id}/edit" %></a>
         <a><%= link_to 'Delete This Review', "/reviews/#{review.id}", method: :delete %></a>
       </div>
-    <% end %>
-    <a><%= link_to 'Add Review', "/shelters/#{@shelter.id}/reviews/new" %></a>
   </section>
+  <% end %>
+    <a><%= link_to 'Add Review', "/shelters/#{@shelter.id}/reviews/new" %></a>
 </div>

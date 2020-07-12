@@ -1,6 +1,6 @@
 class CreateShelters < ActiveRecord::Migration[5.1]
   def change
-    create_table :shelters do |t|
+    create_table :shelters, force: :cascade do |t|
       t.string :name
       t.string :address
       t.string :city

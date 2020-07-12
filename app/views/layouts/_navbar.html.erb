@@ -1,0 +1,9 @@
+<header class="navbar">
+  <div class="navigate">
+    <ul class="nav-list">
+      <li><%= link_to 'Go back to Shelters', "/shelters" %></li>
+      <li><%= link_to 'Go back to Pets', "/pets" %></li>
+      <li><%= link_to "Favorites: #{@favorites.sum_favorites}", "/favorites", id: "fav-pets" %></li>
+    </ul>
+  </div>
+</header>

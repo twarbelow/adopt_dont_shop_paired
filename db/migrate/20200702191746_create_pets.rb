@@ -1,6 +1,6 @@
 class CreatePets < ActiveRecord::Migration[5.1]
   def change
-    create_table :pets do |t|
+    create_table :pets, force: :cascade do |t|
       t.string :image
       t.string :name
       t.float :approximate_age

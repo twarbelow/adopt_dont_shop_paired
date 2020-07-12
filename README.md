@@ -106,7 +106,7 @@ Each review will have:
 ```
 
 ```
-[ ] done
+[x] done
 
 User Story 3, Shelter Review Creation
 
@@ -124,7 +124,7 @@ and I can see my new review
 ```
 
 ```
-[ ] done
+[x] done
 
 User Story 4, Shelter Review Creation, cont.
 
@@ -154,7 +154,7 @@ And I can see my updated review
 ```
 
 ```
-[ ] done
+[x] done
 
 User Story 6, Edit a Shelter Review, cont.
 
@@ -181,7 +181,7 @@ And I should no longer see that shelter review
 Users will be able to favorite a pet and keep track of pet's they're interested in
 
 ```
-[ ] done
+[x] done
 
 User Story 8, Favorite Indicator
 
@@ -192,7 +192,7 @@ I can see this favorite indicator from any page in the application
 ```
 
 ```
-[ ] done
+[x] done
 
 User Story 9, Favorite Creation
 
