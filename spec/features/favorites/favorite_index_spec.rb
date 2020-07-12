@@ -27,6 +27,12 @@ RSpec.describe 'Favorite index page', type: :feature do
     click_on('Favorite This Pet')
   end
 
+  it 'shows when the favorites indicator it clicked' do
+    visit '/shelters'
+    find('.fav-pets').click
+    expect(current_path).to eq '/favorites'
+  end
+
   describe "After favoriting pets and visiting favorite index page" do
     it "can display the linked name of all pets I've favorited" do
       visit '/favorites'
