@@ -8,6 +8,10 @@ class Favorites
     @favorite_pets << pet_id
   end
 
+  def pet_ids
+    @favorited_pets
+  end
+
   def sum_favorites
     @favorite_pets.count
   end
