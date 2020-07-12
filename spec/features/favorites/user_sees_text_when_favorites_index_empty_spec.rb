@@ -6,8 +6,8 @@ RSpec.describe 'As a visitor', type: :feature do
       it 'I see text saying that I have no favorited pets' do
         visit '/favorites'
 
-        expect(page).to have_content("You have not favorited any pets")
+        expect(page).to have_content("You currently have no pets favorited! Visit a pet's page and favorite it to see it listed here.")
       end
     end
   end
-end 
+end
