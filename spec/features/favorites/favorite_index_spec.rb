@@ -27,9 +27,9 @@ RSpec.describe 'Favorite index page', type: :feature do
     click_on('Favorite This Pet')
   end
 
-  it 'shows when the favorites indicator it clicked' do
-    visit '/shelters'
-    find('.fav-pets').click
+  it 'shows when the favorites indicator is clicked' do
+    find('#fav-pets').click
+    # require 'pry'; binding.pry
     expect(current_path).to eq '/favorites'
   end
 
