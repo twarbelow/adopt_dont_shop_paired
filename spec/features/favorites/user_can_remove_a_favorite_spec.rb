@@ -25,6 +25,8 @@ RSpec.describe 'Remove a favorite pet from index process', type: :feature do
     click_on('Favorite This Pet')
     visit "/pets/#{@pet_2.id}"
     click_on('Favorite This Pet')
+
+    visit '/favorites'
   end
 
   describe "Once a pet has been favorited" do
@@ -44,17 +46,17 @@ RSpec.describe 'Remove a favorite pet from index process', type: :feature do
 
   describe 'When I click on that button or link to remove a favorite' do
     it "removes pet from favorites, user is redirected to favorites index and indicator decremented" do
-      expect(page).to have_content()# enter favorites counter here
+      expect(page).to have_content("Favorites: 2")
 
       within "#favorite-#{@pet_1.id}" do
         click_on("Remove From Favorites")
       end
 
       expect(current_path).to eq("/favorites")
-      expect(page).to have_content()# enter flash message here
+      expect(page).to have_content("Pet has been removed from your favorites")
       expect(page).not_to have_css("#favorite-#{@pet_1.id}")
       expect(page).not_to have_link("#{@pet_1.name}", href: "/pets/#{@pet_1.id}")
-      expect(page).to have_content("Favorites: 1")#favorites counter
+      expect(page).to have_content("Favorites: 1")
     end
   end
 end
