@@ -1,0 +1,13 @@
+<h2>Favorite Pets</h2>
+
+
+<% @pets.favorited(@favorites).each do |favorite| %>
+  <section id="favorite-<%= favorite.id %>">
+    <h3>
+      <%= link_to favorite.name, "/pets/#{favorite.id}" %>
+    </h3>
+    <div class="photo">
+      <%= image_tag("#{favorite.image_path}", alt:"favorite photo", method: :get) %>
+    </div>
+  </section>
+<% end %>
