@@ -1,7 +1,7 @@
 class Favorites
   attr_reader :favorite_pets
   def initialize(favorite_pets)
-    @favorite_pets = favorite_pets ||= Array.new
+    @favorite_pets = favorite_pets || Array.new
   end
 
   def add(pet_id)

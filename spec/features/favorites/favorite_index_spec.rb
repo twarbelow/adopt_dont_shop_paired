@@ -30,13 +30,12 @@ RSpec.describe 'Favorite index page', type: :feature do
   describe "After favoriting pets and visiting favorite index page" do
     it "can display the linked name of all pets I've favorited" do
       visit '/favorites'
-
       within "#favorite-#{@pet_1.id}" do
-        expect(page).to have_link("#{@pet_1.name}", href: "/pets/#{@pet_1.id}")
+        expect(page).to have_link(@pet_1.name, href: "/pets/#{@pet_1.id}")
       end
 
       within "#favorite-#{@pet_2.id}" do
-        expect(page).to have_link("#{@pet_1.name}", href: "/pets/#{@pet_1.id}")
+        expect(page).to have_link(@pet_1.name, href: "/pets/#{@pet_1.id}")
       end
     end
 
