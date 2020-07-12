@@ -21,25 +21,37 @@ RSpec.describe 'As a visitor', type: :feature do
                          sex:                  "Female",
                          shelter_id:           @shelter_1.id)
 
-    visit "/pets/#{@pet_1.id}"
-    click_on('Favorite This Pet')
-    visit "/pets/#{@pet_2.id}"
-    click_on('Favorite This Pet')
   end
 
   describe "Once a pet has been favorited" do
     describe "When I visit that pet's show page" do
+      it "removes the link to favorite a pet once it has already been favorited" do
+
+        visit "/pets/#{@pet_1.id}"
+
+        click_on('Favorite This Pet')
+
+        expect(page).not_to have_link('Favorite This Pet')
+        expect(page).to have_link('Remove From Favorites')
+      end
+    end
+
+    describe "When I click that link" do
       it "removes pet from favorites, user is redirected to pet's page,
           user sees flash message, link to favorites returns,
           and see indicator decrement" do
 
         visit "/pets/#{@pet_1.id}"
 
+        click_on('Favorite This Pet')
+
+        expect(page).to have_content('Favorites: 1')
+
         click_on('Remove From Favorites')
 
-        expect(current_path).to eq("/pets/#{@pet.id}")
-        expect(page).to have_content()# enter flash message here
-        expect(page).to have_content("Favorites: 1")#favorites counter
+        expect(current_path).to eq("/pets/#{@pet_1.id}")
+        expect(page).to have_content("Pet has been removed from your favorites")
+        expect(page).to have_content("Favorites: 0")
         expect(page).to have_link('Favorite This Pet')
         expect(page).not_to have_link('Remove From Favorites')
       end
