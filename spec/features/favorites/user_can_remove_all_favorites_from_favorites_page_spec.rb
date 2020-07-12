@@ -41,8 +41,7 @@ RSpec.describe 'Remove a favorite pet from index process', type: :feature do
         click_on('Remove All Favorited Pets')
 
         expect(current_path).to eq('/favorites')
-        expect(page).to have_content("All pets have been removed from your favorites list")
-        expect(page).to have_content("You have not favorited any pets")
+        expect(page).to have_content("You currently have no pets favorited! Visit a pet's page and favorite it to see it listed here.")
         expect(page).to have_content("Favorites: 0")#favorites counter
       end
     end
