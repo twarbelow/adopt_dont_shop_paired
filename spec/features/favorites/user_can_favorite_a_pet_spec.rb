@@ -35,24 +35,24 @@ RSpec.describe 'As a visitor', type: :feature do
       visit "/pets/#{@pet_1.id}"
 
       expect(page).not_to have_content("Pet has been added to your favorites list")
-      expect(page).to have_content("Favorites (0)")
+      expect(page).to have_content("Favorites: 0")
 
       click_on('Favorite This Pet')
 
       expect(current_path).to eq("/pets/#{@pet_1.id}")
       expect(page).to have_content("Pet has been added to your favorites list")
-      expect(page).to have_content("Favorites (1)")
+      expect(page).to have_content("Favorites: 1")
 
       visit "/pets/#{@pet_2.id}"
 
       expect(page).not_to have_content("Pet has been added to your favorites list")
-      expect(page).to have_content("Favorites (1)")
+      expect(page).to have_content("Favorites: 1")
 
       click_on('Favorite This Pet')
 
       expect(current_path).to eq("/pets/#{@pet_2.id}")
       expect(page).to have_content("Pet has been added to your favorites list")
-      expect(page).to have_content("Favorites (2)")
+      expect(page).to have_content("Favorites: 2")
     end
   end
 end
