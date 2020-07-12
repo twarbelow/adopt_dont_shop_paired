@@ -1,15 +1,11 @@
 class Favorites
   attr_reader :favorite_pets
   def initialize(favorite_pets)
-    @favorite_pets = favorite_pets || Array.new
+    @favorite_pets = favorite_pets ||= Array.new
   end
 
   def add(pet_id)
     @favorite_pets << pet_id
-  end
-
-  def pet_ids
-    @favorited_pets
   end
 
   def sum_favorites
@@ -22,5 +18,9 @@ class Favorites
 
   def delete(pet_ids)
     @favorite_pets.delete(pet_ids)
+  end
+
+  def delete_all
+    @favorite_pets = Array.new
   end
 end
