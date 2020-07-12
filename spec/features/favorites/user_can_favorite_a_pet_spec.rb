@@ -23,50 +23,36 @@ RSpec.describe 'As a visitor', type: :feature do
   end
 
   describe "When a user visits a pet's show page" do
-   it 'allows user to see a button or link to favorite that pet' do
-     visit "/pets/#{@pet_1.id}"
+    it 'allows user to see a button or link to favorite that pet' do
+      visit "/pets/#{@pet_1.id}"
 
-     expect(page).to have_link('Favorite This Pet')
-   end
- end
+      expect(page).to have_link('Favorite This Pet')
+    end
+  end
 
- describe 'When a user clicks the button or link' do
-   it "takes the user to that pet's show page, user sees a flash message, and the indicator is incremented by one" do
-     visit "/pets/#{@pet_1.id}"
+  describe 'When a user clicks the button or link' do
+    it "takes the user to that pet's show page, user sees a flash message, and the indicator is incremented by one" do
+      visit "/pets/#{@pet_1.id}"
 
-     expect(page).not_to have_content("Pet has been added to your favorites list")
-     expect(page).to have_content("Favorites (0)")
+      expect(page).not_to have_content("Pet has been added to your favorites list")
+      expect(page).to have_content("Favorites (0)")
 
-     click_on('Favorite This Pet')
+      click_on('Favorite This Pet')
 
-     expect(current_path).to eq("/pets/#{@pet_1.id}")
-     expect(page).to have_content("Pet has been added to your favorites list")
-     expect(page).to have_content("Favorites (1)")
+      expect(current_path).to eq("/pets/#{@pet_1.id}")
+      expect(page).to have_content("Pet has been added to your favorites list")
+      expect(page).to have_content("Favorites (1)")
 
-     visit "/pets/#{@pet_2.id}"
+      visit "/pets/#{@pet_2.id}"
 
-     expect(page).not_to have_content("Pet has been added to your favorites list")
-     expect(page).to have_content("Favorites (1)")
+      expect(page).not_to have_content("Pet has been added to your favorites list")
+      expect(page).to have_content("Favorites (1)")
 
-     click_on('Favorite This Pet')
+      click_on('Favorite This Pet')
 
-     expect(current_path).to eq("/pets/#{@pet_2.id}")
-     expect(page).to have_content("Pet has been added to your favorites list")
-     expect(page).to have_content("Favorites (2)")
-   end
- end
+      expect(current_path).to eq("/pets/#{@pet_2.id}")
+      expect(page).to have_content("Pet has been added to your favorites list")
+      expect(page).to have_content("Favorites (2)")
+    end
+  end
 end
-
-
-
-
-
-
-
-
-
-
-  visit "/pets/#{@pet_1.id}"
-  click_on('Favorite This Pet')
-  visit "/pets/#{@pet_2.id}"
-  click_on('Favorite This Pet')
