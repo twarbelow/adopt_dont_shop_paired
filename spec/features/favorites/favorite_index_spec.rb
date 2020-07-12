@@ -35,7 +35,7 @@ RSpec.describe 'Favorite index page', type: :feature do
       end
 
       within "#favorite-#{@pet_2.id}" do
-        expect(page).to have_link(@pet_1.name, href: "/pets/#{@pet_1.id}")
+        expect(page).to have_link(@pet_2.name, href: "/pets/#{@pet_2.id}")
       end
     end
 
