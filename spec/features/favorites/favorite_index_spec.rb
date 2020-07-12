@@ -4,7 +4,6 @@ RSpec.describe 'Favorite index page', type: :feature do
   describe 'without favorites' do
     it "shows text indicating no favorites when there are none" do
       visit '/favorites'
-      save_and_open_page
       expect(page).to have_content("You currently have no pets favorited! Visit a pet's page and favorite it to see it listed here.")
     end
   end
@@ -38,6 +37,7 @@ RSpec.describe 'Favorite index page', type: :feature do
     it 'shows when the favorites indicator is clicked' do
       find('#fav-pets').click
       expect(current_path).to eq '/favorites'
+      expect(page).to_not have_content("You currently have no pets favorited! Visit a pet's page and favorite it to see it listed here.")
     end
 
     describe "After favoriting pets and visiting favorite index page" do
