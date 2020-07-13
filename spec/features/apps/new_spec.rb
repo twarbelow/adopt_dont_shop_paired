@@ -27,7 +27,7 @@ RSpec.describe 'pet application' do
                           shelter_id:           @shelter_1.id)
 
     visit '/favorites'
-    expect(page).to have_button("Apply to Adopt")
+    expect(page).to have_link("Apply to Adopt")
     click_on("Apply to Adopt")
     expect(current_path).to eq '/favorites/application'
     expect(page).to have_content(@pet_1.name)
