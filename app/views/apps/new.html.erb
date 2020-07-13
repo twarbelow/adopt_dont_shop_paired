@@ -1,0 +1,26 @@
+<div class="adpotion-application">
+  <h1>Application to Adopt Pets</h1>
+  <div class="new_application_info">
+    <ol>
+    <%= form_tag '/apps' do %>
+      <% @pets.each do |pet| %>
+      <%= lable_tag pet.name %>
+      <% check_box_tag "#{pet.name}[]", pet.id, false %>
+    <% end %>
+    <li> <%= label_tag "Name" %></li>
+    <%= text_field_tag :name %><br>
+    <li><%= label_tag "Address" %></li>
+    <%= text_field_tag :address %><br>
+    <li><%= label_tag "City" %></li>
+    <%= text_field_tag :city %><br>
+    <li><%= label_tag "State" %></li>
+    <%= text_field_tag :state%><br>
+    <li><%= label_tag "Zipcode" %></li>
+    <%= text_field_tag :zip %><br>
+    <li><%= lable_tag "Description" %></li>
+    <%= text_field_tag :description %>
+    <a><%= submit_tag 'Submit Application' %></a>
+  </ol>
+</div>
+<% end %>
+</div>
