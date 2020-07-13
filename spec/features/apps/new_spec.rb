@@ -20,7 +20,8 @@ RSpec.describe 'pet application' do
                          sex:                  "Female",
                          shelter_id:           @shelter_1.id)
 
-     @pet_3 = Pet.create!(name:                 "Schnooper",
+     @pet_3 = Pet.create!(image:                "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.com%2FDahey-Hedgehog-Plastic-Decoration-Hamster%2Fdp%2FB06XK495CL&psig=AOvVaw3V-7f11Pm7eVMSar5TYz_p&ust=1594750899460000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCICq95nsyuoCFQAAAAAdAAAAABAD",
+                          name:                 "Schnooper",
                           approximate_age:      13.0,
                           sex:                  "Male",
                           shelter_id:           @shelter_1.id)
