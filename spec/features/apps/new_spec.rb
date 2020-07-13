@@ -26,31 +26,38 @@ RSpec.describe 'pet application' do
                           shelter_id:           @shelter_2.id)
 
     visit '/favorites'
-    # expect link "Apply to adopt"
-    # click link
-    # expect path '/favorites/application'
-    # expect page to have names of favorited pets with options to check next to them
-    # form with: name, address, city, state, zipcode, phone#, description box
-    # expect page to have "Submit Application" button
-
-
+    expect(page).to have_button("Apply to Adopt")
+    click_on("Apply to Adopt")
+    expect(current_path).to eq '/favorites/application'
+    # is there a better way to expect page to have names of favorited pets (something that validates options to check next to them)
+    expect(page).to have_content(@pet_1.name)
+    expect(page).to have_content(@pet_2.name)
+    expect(page).to have_content(@pet_3.name)
+    # is there a better expectation for form with: name, address, city, state, zipcode, phone#, description box
+    expect(page).to have_field("Name")
+    expect(page).to have_field("Address")
+    expect(page).to have_field("City")
+    expect(page).to have_field("State")
+    expect(page).to have_field("Zipcode")
+    expect(page).to have_field("Phone Number")
+    expect(page).to have_field("Description")
+    expect(page).to have_button("Submit Application")
   end
 
   it 'allows a user to apply to adopt many pets' do
     # select @pet_1 @pet_3
-    # fill in name
-    # fill in address
-    # fill in city
-    # fill in state
-    # fill in zipcode
-    # fill in phone#
-    # fill in description box
+    fill_in :address, with: "4939 Ithica Dr"
+    fill_in :city, with: "Fairbanks"
+    fill_in :state, with: "Alaska"
+    fill_in :zipcode, with: "99709"
+    fill_in :phone_number, with: "907-474-4929"
+    fill_in :description, with: "Endless love to give all the animals. Wet food for every cat, tennis balls for ever dog."
 
-    # click 'Submit Application'
-    # expect path '/favorites'
-    # expect(page)to_not have_content(@pet_1)
-    # expect(page)to_not have_content(@pet_3)
-    # expect(page)to have_content(@pet_2)
+    click_on("Submit Application")
+    expect(current_path).to eq '/favorites'
+    expect(page)to_not have_content(@pet_1)
+    expect(page)to_not have_content(@pet_3)
+    expect(page)to have_content(@pet_2)
   end
 
   it 'does not allow a user to apply if the form is not complete' do
