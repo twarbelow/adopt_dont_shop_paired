@@ -4,8 +4,8 @@
     <ol>
       <%= form_tag('/applications',  method: :post) do %>
         <% @favorites.pet_objects.each do |pet| %>
-        <%= pet.name %>
-        <%= check_box_tag(value = "#{pet.name}[]", pet.id) %>
+          <%= pet.name %>
+          <%= check_box_tag(value = "#{pet.name}[]", pet.id) %><br>
         <% end %>
       <% end %>
         <li> <%= label_tag "Name" %></li>
@@ -18,6 +18,8 @@
         <%= text_field_tag :state%><br>
         <li><%= label_tag "Zipcode" %></li>
         <%= text_field_tag :zip %><br>
+        <li><%= label_tag "Phone Number" %></li>
+        <%= text_field_tag :phone_number %><br>
         <li><%= label_tag "Description" %></li>
         <%= text_field_tag :description %><br>
         <a><%= submit_tag 'Submit Application' %></a>
