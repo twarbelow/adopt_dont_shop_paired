@@ -31,5 +31,5 @@ Rails.application.routes.draw do
   delete '/favorites', to: 'favorites#destroy_all'
 
   get 'favorites/application', to: 'apps#new'
-
+  get 'applications/:id', to: 'apps#show'
 end
