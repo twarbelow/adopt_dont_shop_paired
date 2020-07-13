@@ -32,4 +32,5 @@ Rails.application.routes.draw do
 
   get 'favorites/application', to: 'apps#new'
   get 'applications/:id', to: 'apps#show'
+  get '/pets/:id/applications', to: 'apps#index'
 end
