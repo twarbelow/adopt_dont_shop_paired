@@ -23,4 +23,8 @@ class Favorites
   def delete_all
     @favorite_pets = Array.new
   end
+
+  def pet_objects
+    Pet.all.where('id in (?)', favorite_pets)
+  end
 end
