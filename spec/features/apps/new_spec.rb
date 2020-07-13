@@ -25,11 +25,18 @@ RSpec.describe 'pet application' do
                           approximate_age:      13.0,
                           sex:                  "Male",
                           shelter_id:           @shelter_1.id)
+    visit "/pets/#{@pet_1.id}"
+    click_on('Favorite This Pet')
+    visit "/pets/#{@pet_2.id}"
+    click_on('Favorite This Pet')
+    visit "/pets/#{@pet_3.id}"
+    click_on('Favorite This Pet')
 
     visit '/favorites'
     expect(page).to have_link("Apply to Adopt")
     click_on("Apply to Adopt")
     expect(current_path).to eq '/favorites/application'
+    save_and_open_page
     expect(page).to have_content(@pet_1.name)
     expect(page).to have_content(@pet_2.name)
     expect(page).to have_content(@pet_3.name)
