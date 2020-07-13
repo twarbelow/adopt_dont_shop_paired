@@ -11,4 +11,8 @@ class Pet < ApplicationRecord
   def self.favorited(favorites)
     favorites
   end
+
+  def self.applied
+    select(:name, :id).joins(:apps_pets).distinct
+  end
 end
