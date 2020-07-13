@@ -3,11 +3,11 @@
   <div class="new_application_info">
     <ol>
       <%= form_tag('/applications',  method: :post) do %>
-        <% @pets.each do |pet| %>
+        <% @favorites.favorite_pets.each do |pet| %>
           <%= lable_tag pet.name %>
           <% check_box_tag "#{pet.name}[]", pet.id, false %>
         <% end %>
-        
+      <% end %>
         <li> <%= label_tag "Name" %></li>
         <%= text_field_tag :name %><br>
         <li><%= label_tag "Address" %></li>
@@ -18,7 +18,7 @@
         <%= text_field_tag :state%><br>
         <li><%= label_tag "Zipcode" %></li>
         <%= text_field_tag :zip %><br>
-        <li><%= lable_tag "Description" %></li>
+        <li><%= label_tag "Description" %></li>
         <%= text_field_tag :description %>
         <a><%= submit_tag 'Submit Application' %></a>
       </ol>
