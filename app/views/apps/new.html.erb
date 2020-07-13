@@ -4,8 +4,8 @@
     <ol>
       <%= form_tag('/applications',  method: :post) do %>
         <% @favorites.favorite_pets.each do |pet| %>
-          <%= lable_tag pet.name %>
-          <% check_box_tag "#{pet.name}[]", pet.id, false %>
+        <%= check_box_tag 'WHAT GOES HERE[]', WHAT GOES HERE -%>
+        <%= HAVE PET NAME DISPLAYED -%>
         <% end %>
       <% end %>
         <li> <%= label_tag "Name" %></li>
