@@ -52,11 +52,10 @@ RSpec.describe 'pet application' do
     fill_in :phone_number, with: "907-474-4929"
     fill_in :description, with: "Endless love to give all the animals. Wet food for every cat, tennis balls for ever dog."
     find('input[name="commit"]').click
-    require 'pry'; binding.pry
     expect(current_path).to eq '/favorites'
     expect(page).to_not have_content(@pet_1)
     expect(page).to_not have_content(@pet_3)
-    expect(page).to have_content(@pet_2)
+    expect(page).to have_content(@pet_2.name)
   end
 
   # it 'does not allow a user to apply if the form is not complete' do
