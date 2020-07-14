@@ -57,11 +57,30 @@ RSpec.describe 'pet application' do
     find('input[name="commit"]').click
 
     expect(current_path).to eq '/favorites'
-    expect(page).to_not have_content(@pet_1)
-    expect(page).to_not have_content(@pet_3)
+    expect(page).to_not have_content(@pet_1.name)
+    expect(page).to_not have_content(@pet_3.name)
     expect(page).to have_content(@pet_2.name)
   end
 
-  # it 'does not allow a user to apply if the form is not complete' do
-  # end
+  it 'does not allow a user to apply if the form is not complete' do
+    prepare_favorites
+
+    # page.check("#{@pet_1.name}[]")
+    find(:css, "#pet_ids_[value='#{@pet_1.id}']").set(true)
+    # page.check("#{@pet_3.name}[]")
+    find(:css, "#pet_ids_[value='#{@pet_3.id}']").set(true)
+
+    fill_in :address, with: "4939 Ithaca Dr"
+    fill_in :city, with: "Fairbanks"
+    fill_in :state, with: "Alaska"
+    fill_in :zip, with: "99709"
+    fill_in :description, with: "Endless love to give all the animals. Wet food for every cat, tennis balls for ever dog."
+
+    find('input[name="commit"]').click
+
+    expect(current_path).to eq '/favorites/new'
+    expect(page).to have_content("Application not submitted: Required information missing.")
+
+
+  end
 end
