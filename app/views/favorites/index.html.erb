@@ -5,6 +5,13 @@
 
   <%= link_to 'Apply to Adopt', '/favorites/application' %>
 
+  <section id="applied_for_pets">
+    <h3>Pets You've Applied For</h3>
+    <% @pets.applied.each do |applied_for_pet| %>
+      <p><%= link_to "#{applied_for_pet.name}", "/pets/#{applied_for_pet.id}" %></p>
+    <% end %>
+  </section>
+
 <% if @favorite_pets.count == 0 %>
   <p>You currently have no pets favorited! Visit a pet's page and favorite it to see it listed here.</p>
 <% end %>

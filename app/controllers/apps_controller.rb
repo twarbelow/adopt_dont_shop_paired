@@ -1,6 +1,15 @@
 class AppsController < ApplicationController
+
+  def index
+    @pet = Pet.find(params[:id])
+  end
+
   def new
   end
+
+ jmw.us20
+  def show
+    @application = App.find(params[:id])
 
   def create
     new_app = App.new(app_params)
