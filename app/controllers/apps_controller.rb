@@ -7,9 +7,9 @@ class AppsController < ApplicationController
   def new
   end
 
- jmw.us20
   def show
     @application = App.find(params[:id])
+  end
 
   def create
     new_app = App.new(app_params)
