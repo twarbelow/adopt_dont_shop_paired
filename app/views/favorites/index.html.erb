@@ -3,6 +3,8 @@
     <%= link_to 'Remove All Favorited Pets', '/favorites', method: :delete %>
   </navbar>
 
+  <%= link_to 'Apply to Adopt', '/favorites/application' %>
+
 <% if @favorite_pets.count == 0 %>
   <p>You currently have no pets favorited! Visit a pet's page and favorite it to see it listed here.</p>
 <% end %>
