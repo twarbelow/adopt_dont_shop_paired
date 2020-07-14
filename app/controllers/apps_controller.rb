@@ -6,6 +6,9 @@ class AppsController < ApplicationController
     new_app = App.new(app_params)
     pets = params[:pet_ids].join(', ')
     if new_app.save
+      params[:pet_ids].each do |id|
+        @favorites.delete(id)
+      end
       flash[:notice] = "Application successfully submitted for #{pets}."
       redirect_to "/favorites"
     else
