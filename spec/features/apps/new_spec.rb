@@ -25,41 +25,61 @@ RSpec.describe 'pet application' do
                           approximate_age:      13.0,
                           sex:                  "Male",
                           shelter_id:           @shelter_1.id)
+  end
+
+  def prepare_favorites
+    visit "/pets/#{@pet_1.id}"
+    click_on('Favorite This Pet')
+    visit "/pets/#{@pet_2.id}"
+    click_on('Favorite This Pet')
+    visit "/pets/#{@pet_3.id}"
+    click_on('Favorite This Pet')
 
     visit '/favorites'
-    expect(page).to have_link("Apply to Adopt")
     click_on("Apply to Adopt")
-    expect(current_path).to eq '/favorites/application'
-    expect(page).to have_content(@pet_1.name)
-    expect(page).to have_content(@pet_2.name)
-    expect(page).to have_content(@pet_3.name)
-    expect(page).to have_field("Name")
-    expect(page).to have_field("Address")
-    expect(page).to have_field("City")
-    expect(page).to have_field("State")
-    expect(page).to have_field("Zipcode")
-    expect(page).to have_field("Phone Number")
-    expect(page).to have_field("Description")
-    expect(page).to have_button("Submit Application")
   end
 
   it 'allows a user to apply to adopt many pets' do
-    page.check("#{@pet_1.name}")
-    page.check("#{@pet_3.name}")
-    fill_in :address, with: "4939 Ithica Dr"
+    prepare_favorites
+
+    # page.check("#{@pet_1.name}[]")
+    find(:css, "#pet_ids_[value='#{@pet_1.id}']").set(true)
+    # page.check("#{@pet_3.name}[]")
+    find(:css, "#pet_ids_[value='#{@pet_3.id}']").set(true)
+
+    fill_in :name, with: "CatLady"
+    fill_in :address, with: "4939 Ithaca Dr"
     fill_in :city, with: "Fairbanks"
     fill_in :state, with: "Alaska"
-    fill_in :zipcode, with: "99709"
+    fill_in :zip, with: "99709"
     fill_in :phone_number, with: "907-474-4929"
     fill_in :description, with: "Endless love to give all the animals. Wet food for every cat, tennis balls for ever dog."
 
-    click_on("Submit Application")
+    find('input[name="commit"]').click
+
     expect(current_path).to eq '/favorites'
-    expect(page).to_not have_content(@pet_1)
-    expect(page).to_not have_content(@pet_3)
-    expect(page).to have_content(@pet_2)
+    expect(page).to_not have_content(@pet_1.name)
+    expect(page).to_not have_content(@pet_3.name)
+    expect(page).to have_content(@pet_2.name)
   end
 
   it 'does not allow a user to apply if the form is not complete' do
+    prepare_favorites
+
+    # page.check("#{@pet_1.name}[]")
+    find(:css, "#pet_ids_[value='#{@pet_1.id}']").set(true)
+    # page.check("#{@pet_3.name}[]")
+    find(:css, "#pet_ids_[value='#{@pet_3.id}']").set(true)
+
+    fill_in :address, with: "4939 Ithaca Dr"
+    fill_in :city, with: "Fairbanks"
+    fill_in :state, with: "Alaska"
+    fill_in :zip, with: "99709"
+    fill_in :description, with: "Endless love to give all the animals. Wet food for every cat, tennis balls for ever dog."
+
+    find('input[name="commit"]').click
+
+    expect(current_path).to eq '/applications'
+    expect(page).to have_content("Application not submitted: Required information missing.")
   end
 end
