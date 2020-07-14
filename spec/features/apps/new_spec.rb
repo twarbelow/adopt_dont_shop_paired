@@ -81,7 +81,5 @@ RSpec.describe 'pet application' do
 
     expect(current_path).to eq '/applications'
     expect(page).to have_content("Application not submitted: Required information missing.")
-
-
   end
 end
