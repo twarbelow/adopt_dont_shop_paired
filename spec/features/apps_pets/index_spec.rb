@@ -31,7 +31,7 @@ RSpec.describe 'As a visitor', type: :feature do
                          shelter_id:          @shelter_1.id,
                          status:              "adoptable")
 
-    @application_1 = App.create({ name:       "Mr. Guy",
+    @application_1 = App.create!({ name:      "Mr. Guy",
                               address:        "4939 Ithica Dr",
                               city:           "Fairbanks",
                               state:          "Alaska",
@@ -40,8 +40,7 @@ RSpec.describe 'As a visitor', type: :feature do
                               description:    "Endless love to give all the animals. Wet food for every cat, tennis balls for ever dog."
                                       })
 
-    @application_2 = @pet_3.apps.create
-                              ({ name:         "Mrs. Girl",
+    @application_2 = App.create!({ name:       "Mrs. Girl",
                                address:        "123 ABC Dr",
                                city:           "Nome",
                                state:          "Alaska",
@@ -51,6 +50,7 @@ RSpec.describe 'As a visitor', type: :feature do
                                       })
 
     @apps_pet = AppsPet.create({pet_id: @pet_1.id, app_id: @application_1.id})
+    @apps_pet_2 = AppsPet.create({pet_id: @pet_3.id, app_id: @application_2.id})
 
     visit "/pets/#{@pet_1.id}"
     click_on('Favorite This Pet')
@@ -72,9 +72,10 @@ RSpec.describe 'As a visitor', type: :feature do
 
       expect(current_path).to eq("/pets/#{@pet_1.id}/applications")
       expect(page).to have_link("#{@application_1.name}", href: "/applications/#{@application_1.id}")
-      #expect(page).not_to have_link("#{@application_2.name}")  <--- why doesnt this work? It not finding the name, which is the point
+      expect(page).not_to have_link("#{@application_2.name}")
 
       visit "/pets/#{@pet_3.id}/applications"
+
       expect(page).to have_link("#{@application_2.name}", href: "/applications/#{@application_2.id}")
       expect(page).not_to have_link("#{@application_1.name}")
     end
