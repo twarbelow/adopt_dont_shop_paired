@@ -3,8 +3,6 @@
 <section>
  <h3>Names of Applicants:</h3>
 
- <%= require "pry"; binding.pry %>
-
  <% unless @pet.apps.empty? %>
    <% @pet.apps.each do |application| %>
      <p><%= link_to application.name, "/applications/#{application.id}" %></p>
