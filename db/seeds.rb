@@ -29,7 +29,7 @@ pet_1 = Pet.create!(image:              "https://www.vieravet.com/sites/default/
                    sex:                 "Male",
                    description:         "The best boy",
                    shelter_id:          shelter_1.id,
-                   status:              "pending adoption")
+                   status:              "adoptable")
 
 
 pet_2 = Pet.create!(image:              "https://i.pinimg.com/736x/3f/47/7f/3f477ff92627ba171fcc867f23285cf5.jpg",
