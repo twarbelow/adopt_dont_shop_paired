@@ -28,8 +28,7 @@ pet_1 = Pet.create!(image:              "https://www.vieravet.com/sites/default/
                    approximate_age:     4.5,
                    sex:                 "Male",
                    description:         "The best boy",
-                   shelter_id:          shelter_1.id,
-                   status:              "pending adoption")
+                   shelter_id:          shelter_1.id)
 
 
 pet_2 = Pet.create!(image:              "https://i.pinimg.com/736x/3f/47/7f/3f477ff92627ba171fcc867f23285cf5.jpg",
@@ -37,16 +36,14 @@ pet_2 = Pet.create!(image:              "https://i.pinimg.com/736x/3f/47/7f/3f47
                    approximate_age:     4.0,
                    sex:                 "Female",
                    description:         "The best girl",
-                   shelter_id:          shelter_1.id,
-                   status:              "adoptable")
+                   shelter_id:          shelter_1.id)
 
 pet_3 = Pet.create!(image:               "https://cdn0.wideopenpets.com/wp-content/uploads/2019/03/Untitled-design-2019-03-27T180734.510-770x405.jpg",
                     name:                "Sokka",
                     approximate_age:     3.0,
                     sex:                 "Male",
                     description:         "The best boy",
-                    shelter_id:          shelter_2.id,
-                    status:              "adoptable")
+                    shelter_id:          shelter_2.id)
 
 review_1 = Review.create(title:         "Best Review",
                          rating:        5,
@@ -59,3 +56,14 @@ review_2 = Review.create!(title:         "Lame Place",
                           content:       "Doggo did me a bite.",
                           image_path:    "https://www.dictionary.com/e/wp-content/uploads/2018/05/doggo-300x300.jpg",
                           shelter_id:    shelter_1.id)
+                          
+application = App.create({ name:         "Mr. Guy",
+                          address:        "4939 Ithica Dr",
+                          city:           "Fairbanks",
+                          state:          "Alaska",
+                          zip:            "99709",
+                          phone_number:   "907-474-4929",
+                          description:    "Endless love to give all the animals. Wet food for every cat, tennis balls for ever dog."
+                          })
+
+application.pets << [pet_1, pet_2]

@@ -44,6 +44,7 @@ RSpec.describe 'As a visitor', type: :feature do
 
     @application.pets << [@pet_1, @pet_2]
 
+
   end
   describe "When a user visits an application's show page" do
     it "shows a link to approve the application for that specific pet that the application is for" do

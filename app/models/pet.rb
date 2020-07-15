@@ -17,6 +17,17 @@ class Pet < ApplicationRecord
   end
 
   def adoptable?
-    status == "adoptable"
+    apps_pets.all?{|ap| !ap.approved?}
+  end
+
+  def approved_for
+  end
+
+  def status
+    if adoptable?
+      "Adoptable"
+    else
+      "Pending"
+    end
   end
 end
