@@ -5,6 +5,9 @@ class PetsController < ApplicationController
 
   def show
     @pet = Pet.find(params[:id])
+    app_pet = AppsPet.where(pet_id: @pet.id).pluck(:app_id)
+    @applicant = App.find(app_pet)
+
   end
 
   def new
