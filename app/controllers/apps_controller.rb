@@ -5,6 +5,7 @@ class AppsController < ApplicationController
   end
 
   def new
+    @favorite_pets
   end
 
   def show
@@ -13,17 +14,19 @@ class AppsController < ApplicationController
 
   def create
     new_app = App.new(app_params)
-    require "pry"; binding.pry
-    pets = params[:pet_ids].join(', ')
     if new_app.save
-      params[:pet_ids].each do |id|
-        @favorites.delete(id)
+      @favorites.favorite_pets.each do |favorite|
+      AppsPet.create({pet_id: favorite, app_id: new_app.id})
       end
-      flash[:notice] = "Application successfully submitted for #{pets}."
+
+      @favorites.delete(params[:favorite_ids])
+      session[:favorites] = @favorites.favorite_pets
+
+      flash[:applied] = "Your application for the selected pet has been submitted."
       redirect_to "/favorites"
     else
-      flash[:notice] = "Application not submitted: Required information missing."
-      render :new
+      flash[:incomplete] = "Application not submitted: Required information missing."
+      redirect_to '/applications/new'
     end
   end
 
