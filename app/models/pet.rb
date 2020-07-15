@@ -15,4 +15,8 @@ class Pet < ApplicationRecord
   def self.applied
     select(:name, :id).joins(:apps_pets).distinct
   end
+
+  def adoptable?
+    status == "adoptable"
+  end
 end
