@@ -13,6 +13,7 @@ class AppsController < ApplicationController
 
   def create
     new_app = App.new(app_params)
+    require "pry"; binding.pry
     pets = params[:pet_ids].join(', ')
     if new_app.save
       params[:pet_ids].each do |id|
