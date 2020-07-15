@@ -55,10 +55,11 @@ RSpec.describe 'As a visitor', type: :feature do
 
     @favorites = Favorites.new([@pet_1.id, @pet_2.id])
     @pets = Pet.all
-    @application_1.pets << [@pet_1, @pet_2]
+
 
     visit "/applications/#{@application_1.id}"
-    click_link "Approve application for: #{@pet_1.name}"
+    
+    click_link "Approve application for pet: #{@pet_1.name}"
   end
 
   describe "validations" do

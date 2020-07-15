@@ -19,7 +19,7 @@ class AppsController < ApplicationController
       AppsPet.create({pet_id: favorite, app_id: new_app.id})
       end
 
-      @favorites.delete(params[:favorite_ids])
+      @favorites.delete(params[:favorite_ids]) #might be the wrong thing to call here
       session[:favorites] = @favorites.favorite_pets
 
       flash[:applied] = "Your application for the selected pet has been submitted."
