@@ -1,4 +1,5 @@
 class Pet < ApplicationRecord
+
   validates_presence_of :image
   validates_presence_of :name
   validates_presence_of :approximate_age
@@ -17,6 +18,14 @@ class Pet < ApplicationRecord
   end
 
   def adoptable?
-    status == "adoptable"
+    status ? "adoptable" : "pending"
+  end
+
+  def self.approved
+    applied.where('apps_pets.approved = true')
+  end
+
+  def owner
+    apps_pets.where(approved: true).first.app
   end
 end
