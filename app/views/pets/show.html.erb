@@ -9,6 +9,9 @@
       <p>Sex: <%= @pet.sex %></p>
       <p>Sheltered At: <%= link_to "#{@pet.shelter.name}", "/shelters/#{@pet.shelter.id}/pets" %></p>
       <p>Status: <%= @pet.status %></p>
+      <% if !@pet.adoptable? %>
+        <p>On hold for: <%= @applicant.last.name %></p>
+      <% end %>
   </body>
 
   <div class="navigate">

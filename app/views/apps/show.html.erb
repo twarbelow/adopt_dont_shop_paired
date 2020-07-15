@@ -14,6 +14,11 @@
   <% @application.pets.each do |pet|%>
   <%= link_to pet.name, "/pets/#{pet.id}" %>
   <section id="pet-links-<%= pet.id %>">
+    <% if pet.adoptable? %>
+      <%= link_to "Approve application for pet: #{pet.name}", "/applications/#{@application.id}/#{pet.id}/pending", method: :patch %>
+    <% else %>
+      <%= link_to "Revoke application for: #{pet.name}", "/applications/#{@application.id}/#{pet.id}/adoptable", method: :patch %>
+    <% end %>
   </section>
   <% end %>
 </section>

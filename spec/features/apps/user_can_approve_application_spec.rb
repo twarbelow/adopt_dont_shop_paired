@@ -1,4 +1,5 @@
 require 'rails_helper'
+
 RSpec.describe 'As a visitor', type: :feature do
   before(:each) do
     @shelter_1 = Shelter.create!(name:        "Good Boys Are Us",
@@ -13,7 +14,7 @@ RSpec.describe 'As a visitor', type: :feature do
                          sex:                 "Male",
                          description:         "The best boy",
                          shelter_id:          @shelter_1.id,
-                         status:              "pending adoption")
+                         status:              "adoptable")
 
 
     @pet_2 = Pet.create!(image:               "https://i.pinimg.com/736x/3f/47/7f/3f477ff92627ba171fcc867f23285cf5.jpg",
@@ -32,7 +33,7 @@ RSpec.describe 'As a visitor', type: :feature do
                          shelter_id:          @shelter_1.id,
                          status:              "adoptable")
 
-    @application_1 = App.create!({ name:      "Mr. Guy",
+    @application = App.create({ name:         "Mr. Guy",
                               address:        "4939 Ithica Dr",
                               city:           "Fairbanks",
                               state:          "Alaska",
@@ -41,51 +42,34 @@ RSpec.describe 'As a visitor', type: :feature do
                               description:    "Endless love to give all the animals. Wet food for every cat, tennis balls for ever dog."
                                       })
 
-    @application_2 = App.create!({ name:       "Mrs. Girl",
-                               address:        "123 ABC Dr",
-                               city:           "Nome",
-                               state:          "Alaska",
-                               zip:            "99999",
-                               phone_number:   "907-252-1234",
-                               description:    "Good boys need good homes. Hit me up"
-                                      })
-
-    @apps_pet = AppsPet.create({pet_id: @pet_1.id, app_id: @application_1.id})
-    @apps_pet_2 = AppsPet.create({pet_id: @pet_3.id, app_id: @application_2.id})
+    @application.pets << [@pet_1, @pet_2]
 
     @favorites = Favorites.new([@pet_1.id, @pet_2.id])
-    @pets = Pet.all
 
-
-    visit "/applications/#{@application_1.id}"
-    
-    click_link "Approve application for pet: #{@pet_1.name}"
   end
+  describe "When a user visits an application's show page" do
+    it "shows a link to approve the application for that specific pet that the application is for" do
+      visit "/applications/#{@application.id}"
 
-  describe "validations" do
-    it { should validate_presence_of :image }
-    it { should validate_presence_of :name }
-    it { should validate_presence_of :approximate_age}
-    it { should validate_presence_of :sex }
-    it { should validate_presence_of :shelter_id }
-  end
-
-  describe "methods" do
-    it "can return all favorite pets" do
-
-      expected_favs = @favorites
-      expect(@pets.favorited(@favorites)).to eq(expected_favs)
+      within("#pet-links-#{@pet_1.id}") do
+        expect(page).to have_link("Approve application for pet: #{@pet_1.name}")
+      end
+      within("#pet-links-#{@pet_2.id}") do
+        expect(page).to have_link("Approve application for pet: #{@pet_2.name}")
+      end
     end
 
-    it 'can return relation with name and id all applied-for pets' do
+    describe "When a user clicks on a link to approve the application for one particular pet" do
+      it "takes user back to that pet's show page where they see the status as 'pending' with applicant's name" do
+        visit "/applications/#{@application.id}"
 
-      expected = Pet.select(:name, :id).joins(:apps_pets).distinct
-      expect(@pets.applied).to eq(expected)
-    end
+        click_link "Approve application for pet: #{@pet_2.name}"
+        expect(current_path).to eq("/pets/#{@pet_2.id}")
 
-    it 'can return relation with name and id all approved-application pets' do
+        expect(page).to have_content "Status: pending"
 
-      expect(@pets.approved).to eq([@pet_1])
+        expect(page).to have_content "On hold for: #{@application.name}"
+      end
     end
   end
 end
